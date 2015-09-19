@@ -12,3 +12,10 @@ javarepl
 ```
 
 to get a java console.
+
+
+In order to compile a file:
+
+```
+javac Filename.java && java Filename
+```
