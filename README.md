@@ -13,6 +13,7 @@ javarepl
 
 to get a java console.
 
+### Compiling
 
 In order to compile a file:
 
