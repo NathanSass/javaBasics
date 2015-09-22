@@ -13,6 +13,13 @@ javarepl
 
 to get a java console.
 
+Use
+```
+:load Filename.java
+```
+
+to load a file
+
 ### Compiling
 
 In order to compile a file:
