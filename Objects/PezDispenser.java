@@ -1,16 +1,19 @@
 public class PezDispenser {
-	// Must match filename
-	public static final int MAX_PEZ = 12; // final means the value is immutable
-	private String mCharachterName; // Instance variable
+	public static final int MAX_PEZ = 12;
+	private String mCharachterName;
 	private int mPezCount;
 
-	public PezDispenser(String charachterName) { // Constructor must be same as the class name
+	public PezDispenser(String charachterName) {
 		mCharachterName = charachterName;
 		mPezCount = 0;
 	}
 
-	public void load() { // void means it return nothing
+	public void load() {
 		mPezCount = MAX_PEZ;
+	}
+
+	public boolean isEmpty() {
+		return mPezCount == 0;
 	}
 
 	public String getCharachterName() {

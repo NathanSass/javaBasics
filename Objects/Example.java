@@ -7,5 +7,15 @@ public class Example {
 		
 		System.out.printf("The dispenser charachter is %s\n",
 			dispenser.getCharachterName());
+
+		if (dispenser.isEmpty()) {
+			System.out.println("it is currently empty");
+		}
+
+		System.out.println("Loading...");
+		dispenser.load();
+		if (!dispenser.isEmpty()) {
+			System.out.println("it is no longer empty");
+		}
 	}
 }
