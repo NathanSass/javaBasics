@@ -9,6 +9,7 @@ public class Game {
 	}
 
 	public boolean applyGuess(char letter) {
+		letter = validateGuess(letter);
 		boolean isHit = mAnswer.indexOf(letter) >= 0;
 		if (isHit) {
 			mHits += letter;
@@ -16,6 +17,25 @@ public class Game {
 			mMisses += letter;
 		}
 		return isHit;
+	}
+
+	public boolean applyGuess(String letters){
+		if (letters.length() == 0) {
+			throw new IllegalArgumentException("No letter found");
+		}
+		return applyGuess(letters.charAt(0));
+	}
+
+	private char validateGuess(char letter) {
+		if (! Character.isLetter(letter)) {
+			throw new IllegalArgumentException("A letter is required");
+		}
+		letter = Character.toLowerCase(letter);
+		if (mMisses.indexOf(letter) >= 0 || mHits.indexOf(letter) >= 0) {
+			throw new IllegalArgumentException(letter + " has already been guessed");
+		}
+
+		return letter;
 	}
 
 	public String getCurrentProgress() {
@@ -28,7 +48,6 @@ public class Game {
 			progress += display;
 		}
 		return progress;
-		// return "sadfdsf";
 	}
 
 	public int getRemainingTries() {
