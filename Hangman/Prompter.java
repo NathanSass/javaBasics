@@ -3,18 +3,24 @@ import java.io.Console;
 public class Prompter {
 	private Game mGame;
 	
-	public void play() {
-		while (mGame.getRemainingTries() > 0) {
-			displayProgress();
-			promptForGuess();
-		}
-	}
 	public Prompter (Game game) {
 		mGame = game;
 	}
-	public void displayProgress(){
-		System.out.printf("You have %d tries left to solve: %s\n", mGame.getRemainingTries(), mGame.getCurrentProgress());
+	
+	public void play() {
+		while (mGame.getRemainingTries() > 0 && !mGame.isSolved()) {
+			displayProgress();
+			promptForGuess();
+		}
+
+		if (mGame.isSolved()) {
+			System.out.printf("Congrats, you won with %d tries remaining",
+				mGame.getRemainingTries());
+		} else {
+			System.out.printf("Bummer the word was %s. :(\n", mGame.getAnswer());
+		}
 	}
+	
 	public boolean promptForGuess() {
 		Console console = System.console();
 		boolean isHit = false;
@@ -29,6 +35,10 @@ public class Prompter {
 			}
 		}
 		return isHit;
+	}
+	
+	public void displayProgress(){
+		System.out.printf("You have %d tries left to solve: %s\n", mGame.getRemainingTries(), mGame.getCurrentProgress());
 	}
 		
 }
