@@ -2,7 +2,7 @@ public class Hangman {
 	public static void main(String[] args) {
 		
 		if (args.length ==0) { // need more sanitization for this
-			System.out.println("Please enter a word");
+			System.out.println("Please enter a word: ");
 			System.exit(0);
 		}
 		
