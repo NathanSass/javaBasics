@@ -3,7 +3,7 @@ import java.util.Date;
 
 // author, description, creationDate
 
-public class Treet {
+public class Treet implements Comparable{
 	private String mDescription;
 	private String mAuthor;
 	private Date mCreationDate;
@@ -14,8 +14,9 @@ public class Treet {
 		mCreationDate = creationDate;
 	}
 
-	public String getAuthor(){
-		return mAuthor;
+
+	public String[] getWords(){
+		return mDescription.toLowerCase().split("[^\\w#@']+");
 	}
 
 	public String getDescription(){
@@ -25,9 +26,28 @@ public class Treet {
 	public Date getCreationDate(){
 		return mCreationDate;
 	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		Treet other = (Treet) obj;
+		if (equals(other)) {
+			return 0;
+		}
 
+		int dateCmp = mCreationDate.compareTo(other.mCreationDate);
+		if (dateCmp == 0) {
+			return mDescription.compareTo(other.mDescription);
+		}
+		return dateCmp;
+	}
+	public String getAuthor(){
+		return mAuthor;
+	}
+	
 	@Override
 	public String toString(){
-		return "Treet: \"" + mDescription + "\" - @" + mAuthor;
+		// return "Treet: \"" +mDescription + "\" - @" + mAuthor;
+		return String.format("Treet: \"%s\" by %s on %s",
+			mDescription, mAuthor, mCreationDate);
 	}
 }
