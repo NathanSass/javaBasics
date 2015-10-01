@@ -1,9 +1,12 @@
 package com.structurepackage;
+import java.io.Serializable;
 import java.util.Date;
 
 // author, description, creationDate
 
-public class Treet implements Comparable{
+public class Treet implements Comparable, Serializable{
+	private static final long serialVersionUID = 6096248543031087865L;
+	// private boolean mBreakit = true;
 	private String mDescription;
 	private String mAuthor;
 	private Date mCreationDate;

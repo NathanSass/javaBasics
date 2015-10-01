@@ -1,4 +1,6 @@
 import com.structurepackage.Treet;
+import com.structurepackage.Treets;
+
 import java.util.Arrays;
 import java.util.Date;
 
@@ -22,6 +24,11 @@ public class Example {
     Arrays.sort(treets);
     for (Treet exampleTreet : treets) {
     	System.out.println(exampleTreet);
+    }
+    Treets.save(treets);
+    Treet[] reloadedTreets = Treets.load();
+    for(Treet reloaded : reloadedTreets) {
+    	System.out.println(reloaded);
     }
   }
 }
